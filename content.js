@@ -9,18 +9,29 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     navigator.usb.requestDevice({ filters: filters })
     .then(usbDevice => {
       var callback = function (response) {
-        // console.log(response);
-
         console.log(response);
 
+        var gender = ''
+        if (response.gender == "1"){
+          var gender = 'male'
+        }else {
+          var gender = 'female'
+        }
+
+        var fullname_en = response.fullname_en.replace("#", " ");
+        var fullname_en = fullname_en.replace("##", " ");
+
+        var fullname_th = response.fullname_th.replace("#", " ");
+        var fullname_th = fullname_th.replace("##", " ");
+
         document.getElementById("cid_1").value = response.cid
-        document.getElementById("fullname_en").value = response.fullname_en
-        document.getElementById("fullname_th").value = response.fullname_th
-        document.getElementById("gender").value = response.gender
+        document.getElementById("fullname_en").value = fullname_en
+        document.getElementById("fullname_th").value = fullname_th
+        document.getElementById("gender").value = gender
         document.getElementById("dob").value = response.birth
         document.getElementById("issuer").value = response.issuer
         document.getElementById("issue_date").value = response.issueDate
-        // document.getElementById("issue_exp").value = response.issueExp
+        document.getElementById("issue_exp").value = response.issueExp
         document.getElementById("address").value = response.address_th
       };
       var handle_error = function (obj, error_text_status) {

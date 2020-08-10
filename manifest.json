@@ -3,7 +3,8 @@
   "version": "1.0",
   "description": "Access WebUSB as Chrome extension",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "http://localhost/*"
   ],
   "browser_action": {
     "default_popup": "popup.html",
@@ -16,7 +17,8 @@
       ],
       "all_frames": true,
       "js": [
-        "content.js"
+        "content.js",
+        "jquery.min.js"
       ]
     }
   ],

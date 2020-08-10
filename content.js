@@ -13,9 +13,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
         var gender = ''
         if (response.gender == "1"){
-          var gender = 'male'
+          var gender = 'ชาย'
         }else {
-          var gender = 'female'
+          var gender = 'หญิง'
         }
 
         var fullname_en = response.fullname_en.replace("#", " ");
@@ -23,6 +23,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
         var fullname_th = response.fullname_th.replace("#", " ");
         var fullname_th = fullname_th.replace("##", " ");
+
+        var image = new Image();
+        image.src = `data:image/jpeg;base64,${response.photo_b64}`;
+        
 
         document.getElementById("cid_1").value = response.cid
         document.getElementById("fullname_en").value = fullname_en
@@ -33,7 +37,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         document.getElementById("issue_date").value = response.issueDate
         document.getElementById("issue_exp").value = response.issueExp
         document.getElementById("address").value = response.address_th
-        // document.getElementsByTagName('img')[1].src = response.photo
+        document.getElementsByTagName('img')[1].src = image.src
       };
       var handle_error = function (obj, error_text_status) {
         console.log(error_text_status + " " + obj);

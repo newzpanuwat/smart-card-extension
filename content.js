@@ -33,6 +33,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         document.getElementById("issue_date").value = response.issueDate
         document.getElementById("issue_exp").value = response.issueExp
         document.getElementById("address").value = response.address_th
+        // document.getElementsByTagName('img')[1].src = response.photo
       };
       var handle_error = function (obj, error_text_status) {
         console.log(error_text_status + " " + obj);
@@ -62,24 +63,3 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       console.log("There is no device. " + e);
     });
 });
-
-// var loginPayload = {};
-// loginPayload.username = document.getElementById('username').value;
-// loginPayload.password = document.getElementById('password').value;
-// console.log(loginPayload);
-
-// var callback = function (response) {
-//   console.log(response);
-// };
-// var handle_error = function (obj, error_text_status) {
-//   console.log(error_text_status + " " + obj);
-// };
-
-// $.ajax({
-//   url: 'https://127.0.0.1:8443/hello',
-//   type: 'POST',
-//   success: callback,
-//   data: JSON.stringify(loginPayload),
-//   contentType: 'application/json',
-//   error: handle_error
-// });

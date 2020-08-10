@@ -17,11 +17,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         document.getElementById("fullname_en").value = response.fullname_en
         document.getElementById("fullname_th").value = response.fullname_th
         document.getElementById("gender").value = response.gender
-        document.getElementById("dob").value = response.dob
+        document.getElementById("dob").value = response.birth
         document.getElementById("issuer").value = response.issuer
         document.getElementById("issue_date").value = response.issueDate
-        document.getElementById("issue_exp").value = response.issueExp
-        document.getElementById("address").value = response.addressTH
+        // document.getElementById("issue_exp").value = response.issueExp
+        document.getElementById("address").value = response.address_th
       };
       var handle_error = function (obj, error_text_status) {
         console.log(error_text_status + " " + obj);
